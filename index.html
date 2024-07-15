@@ -53,6 +53,8 @@ function GenerateConfig {
         [string[]]$AllProducts
     )
 
+    $Channel = "PerpetualVL2024"
+
     Write-Host "Select Arch"
     Write-Host "1. x64"
     Write-Host "2. x32"
@@ -125,6 +127,7 @@ function GenerateConfig {
         }
         10 {
             $ProductId = "O365ProPlusRetail"
+            $Channel = "Current"
             Write-Host "O365ProPlusRetail Selected" -ForegroundColor Green
         }
         default {
@@ -156,7 +159,7 @@ function GenerateConfig {
     $nonProjectVisioSelected = $SelectedProducts | Where-Object { $_ -ne "Project" -and $_ -ne "Visio" }
     $xmlContent = @"
 <Configuration>`n
-    <Add OfficeClientEdition="$Arch" Channel="PerpetualVL2021">`n
+    <Add OfficeClientEdition="$Arch" Channel="$Channel">`n
 "@
 
     # Verificar si hay productos seleccionados excluyendo Project y Visio
