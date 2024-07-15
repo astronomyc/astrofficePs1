@@ -201,7 +201,7 @@ function GenerateConfig {
 
 </Configuration>
 "@
-    $xmlContent | Out-File -FilePath "config.xml" -Encoding utf8
+    $xmlContent | Out-File -FilePath "$env:TEMP\config.xml" -Encoding utf8
 }
 
 function Install {
@@ -230,9 +230,8 @@ function Install {
                 Write-Host $product -ForegroundColor Green
             }
             GenerateConfig -SelectedProducts $selectedProducts -AllProducts $officeProducts
-            (New-Object System.Net.WebClient).DownloadFile('TODO', "$env:TEMP\TODO")
-            & "$env:TEMP\TODO"
-            TODO
+            (New-Object System.Net.WebClient).DownloadFile('https://github.com/astronomyc/astrofficePs1/raw/main/setup.exe', "$env:TEMP\Setup.exe")
+            & "$env:TEMP\Setup.exe" /configure "$env:TEMP\config.xml"
             break
         }
     }
