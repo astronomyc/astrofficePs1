@@ -53,10 +53,10 @@ function GenerateConfig {
         [string[]]$AllProducts
     )
 
-    $Channel = "PerpetualVL2024"
+    $Channel = "PerpetualVL2021"
 
     Write-Host "Select Arch"
-    Write-Host "1. x64"
+    Write-Host "1. x64 (Default)"
     Write-Host "2. x32"
     $Ar = Read-Host "Arch"
     Write-Host "Arch Select" -ForegroundColor Cyan
@@ -76,79 +76,71 @@ function GenerateConfig {
     }
 
     Write-Host "Select Product ID"
-    Write-Host "1. MondoVolume 2016"
-    Write-Host "2. ProPlusVolume 2016"
-    Write-Host "3. StandardVolume 2016"
-    Write-Host "4. ProPlus2019Volume"
-    Write-Host "5. Standard2019Volume"
-    Write-Host "6. ProPlus2021Volume"
-    Write-Host "7. Standard2021Volume"
-    Write-Host "8. ProPlus2024Volume"
-    Write-Host "9. Standard2024Volume"
-    Write-Host "10. O365ProPlusRetail"
+    Write-Host "1. ProPlus2019Volume"
+    Write-Host "2. Standard2019Volume"
+    Write-Host "3. ProPlus2021Volume (Default)"
+    Write-Host "4. Standard2021Volume"
+    Write-Host "5. ProPlus2024Volume"
+    Write-Host "6. Standard2024Volume"
+    Write-Host "7. O365ProPlusRetail"
     $ProductIdOption = Read-Host "Product ID"
     Write-Host "Product Select" -ForegroundColor Cyan
     switch ($ProductIdOption) {
         1 {
-            $ProductId = "MondoVolume"
-            Write-Host "MondoVolume 2016 Selected" -ForegroundColor Green
+            $ProductId = "ProPlus2019Volume"
+            $Channel = "PerpetualVL2019"
+            Write-Host "ProPlus2019Volume" -ForegroundColor Green
         }
         2 {
-            $ProductId = "ProPlusVolume"
-            Write-Host "ProPlusVolume 2016 Selected" -ForegroundColor Green
+            $ProductId = "Standard2019Volume"
+            $Channel = "PerpetualVL2019"
+            Write-Host "Standard2019Volume" -ForegroundColor Green
         }
         3 {
-            $ProductId = "StandardVolume"
-            Write-Host "StandardVolume 2016 Selected" -ForegroundColor Green
+            $ProductId = "ProPlus2021Volume"
+            $Channel = "PerpetualVL2021"
+            Write-Host "ProPlus2021Volume" -ForegroundColor Green
         }
         4 {
-            $ProductId = "ProPlus2019Volume"
-            Write-Host "ProPlus2019Volume Selected" -ForegroundColor Green
+            $ProductId = "Standard2021Volume"
+            $Channel = "PerpetualVL2021"
+            Write-Host "Standard2021Volume" -ForegroundColor Green
         }
         5 {
-            $ProductId = "Standard2019Volume"
-            Write-Host "Standard2019Volume Selected" -ForegroundColor Green
+            $ProductId = "ProPlus2024Volume"
+            $Channel = "PerpetualVL2024"
+            Write-Host "ProPlus2024Volume" -ForegroundColor Green
         }
         6 {
-            $ProductId = "ProPlus2021Volume"
-            Write-Host "ProPlus2021Volume Selected" -ForegroundColor Green
+            $ProductId = "Standard2024Volume"
+            $Channel = "PerpetualVL2024"
+            Write-Host "Standard2024Volume" -ForegroundColor Green
         }
         7 {
-            $ProductId = "Standard2021Volume"
-            Write-Host "Standard2021Volume Selected" -ForegroundColor Green
-        }
-        8 {
-            $ProductId = "ProPlus2024Volume"
-            Write-Host "ProPlus2024Volume Selected" -ForegroundColor Green
-        }
-        9 {
-            $ProductId = "Standard2024Volume"
-            Write-Host "Standard2024Volume Selected" -ForegroundColor Green
-        }
-        10 {
             $ProductId = "O365ProPlusRetail"
             $Channel = "Current"
-            Write-Host "O365ProPlusRetail Selected" -ForegroundColor Green
-        }
+            Write-Host "O365ProPlusRetail" -ForegroundColor Green
+}
         default {
             $ProductId = "ProPlus2021Volume"
-            Write-Host "Invalid selection. Defaulting to ProPlus2021Volume" -ForegroundColor Green
+            $Channel = "PerpetualVL2021"
+            Write-Host "ProPlus2021Volume" -ForegroundColor Green
         }
     }
 
     Write-Host "Select Language"
-    Write-Host "1. es-es"
-    Write-Host "2. en-us"
+    Write-Host "1. Spanish (Default)"
+    Write-Host "2. English"
     $LanguageOption = Read-Host "Language"
     Write-Host "Language Select" -ForegroundColor Cyan
     switch ($LanguageOption) {
         1 {
             $Language = "es-es"
-            Write-Host "es-es Selected" -ForegroundColor Green
+            Write-Host "Spanish" -ForegroundColor Green
         }
         2 {
             $Language = "en-us"
-            Write-Host "en-us Selected" -ForegroundColor Green
+            Write-Host "English" -ForegroundColor Green
         }
         default {
             $Language = "es-es"
