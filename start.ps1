@@ -161,6 +161,7 @@ function ActivateOffice {
     (New-Object System.Net.WebClient).DownloadFile($url, $destination)
 
     & $destination /Ohook
+    Write-Host "Activacion completa" -ForegroundColor Green
 }
 
 function UninstallOffice {
