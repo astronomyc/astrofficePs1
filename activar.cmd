@@ -13,7 +13,7 @@
 
 
 ::  To activate Office with Ohook activation, run the script with "/Ohook" parameter or change 0 to 1 in below line
-set _act=1
+set _act=0
 
 ::  To remove Ohook activation, run the script with /Ohook-Uninstall parameter or change 0 to 1 in below line
 set _rem=0
@@ -115,8 +115,6 @@ echo:
 ping 127.0.0.1 -n 20
 )
 cls
-
-::  Check LF line ending
 
 popd
 

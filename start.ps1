@@ -156,9 +156,14 @@ function InstallOffice {
 }
 
 function ActivateOffice {
-    Write-Host "Activando Office..." -ForegroundColor Cyan
-    Invoke-RestMethod https://get.activated.win | Invoke-Expression
-    Write-Host "Activacion completada." -ForegroundColor Green
+    $scriptUrl = "https://raw.githubusercontent.com/astronomyc/astrofficePs1/refs/heads/main/activar.cmd"
+    $scriptPath = "$env:TEMP\Ohook_Activation_AIO.cmd"
+
+    # Descargar el archivo
+    Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
+
+    # Ejecutar en CMD
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c /Ohook `"$scriptPath`"" -Wait -NoNewWindow
 }
 
 function UninstallOffice {
