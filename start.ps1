@@ -164,6 +164,12 @@ function ActivateOffice {
     Write-Host "Activacion completa" -ForegroundColor Green
 }
 
+function OtherActivateOffice {
+    Write-Host "Activando Office..." -ForegroundColor Cyan
+    Invoke-RestMethod https://get.activated.win | Invoke-Expression
+    Write-Host "Activacion completada." -ForegroundColor Green
+}
+
 function UninstallOffice {
     Write-Host "Iniciando la desinstalacion de Office..." -ForegroundColor Cyan
 
@@ -187,11 +193,12 @@ function UninstallOffice {
 
 # Menu principal
 while ($true) {
-    $mainOption = Show-Menu -Options @("Instalar", "Activar", "Desinstalar", "Salir") -Prompt "Seleccione una opcion:"
+    $mainOption = Show-Menu -Options @("Instalar", "Activar", "Activar2", "Desinstalar", "Salir") -Prompt "Seleccione una opcion:"
 
     switch ($mainOption) {
         "Instalar" { InstallOffice }
         "Activar" { ActivateOffice }
+        "Activar2" { OtherActivateOffice }
         "Desinstalar" { UninstallOffice }
         "Salir" { exit }
     }
