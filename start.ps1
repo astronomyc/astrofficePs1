@@ -156,14 +156,11 @@ function InstallOffice {
 }
 
 function ActivateOffice {
-    $scriptUrl = "https://raw.githubusercontent.com/astronomyc/astrofficePs1/refs/heads/main/activar.cmd"
-    $scriptPath = "$env:TEMP\Ohook_Activation_AIO.cmd"
+    $url = "https://raw.githubusercontent.com/astronomyc/astrofficePs1/refs/heads/main/activar.txt"
+    $destination = "$env:TEMP\activate.cmd"
+    (New-Object System.Net.WebClient).DownloadFile($url, $destination)
 
-    # Descargar el archivo
-    Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
-
-    # Ejecutar en CMD
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c /Ohook `"$scriptPath`"" -Wait -NoNewWindow
+    & $destination /Ohook
 }
 
 function UninstallOffice {
